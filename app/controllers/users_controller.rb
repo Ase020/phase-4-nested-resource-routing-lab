@@ -3,11 +3,11 @@ class UsersController < ApplicationController
 
   def index
     users = User.all
-    render json: users, include: {items: {except: [:updated_at, :created_at, :user_id]}}, except: [:updated_at, :created_at]
+    render json: users, include: :items
   end
   def show
     user = User.find(params[:id])
-    render json: user, include: {items: {except: [:updated_at, :created_at, :user_id]}}, except: [:updated_at, :created_at]
+    render json: user, include: :items
   end
 
   private
